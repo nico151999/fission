@@ -47,5 +47,9 @@ spec:
         {{- if .Values.terminationMessagePolicy }}
           terminationMessagePolicy: {{ .Values.terminationMessagePolicy }}
         {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets: 
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       serviceAccountName: fission-svc
 {{- end }}

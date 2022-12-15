@@ -38,4 +38,8 @@ spec:
             - name: GA_TRACKING_ID
               value: "{{ .Values.gaTrackingID }}"
       serviceAccountName: fission-svc
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets: 
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
 {{- end }}
